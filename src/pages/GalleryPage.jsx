@@ -1,7 +1,7 @@
 import { IoCloudUploadOutline } from "react-icons/io5";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
-import PhotoDetails from "../components/PhotoDetails"; 
+import PhotoDetails from "../components/PhotoDetails";
 
 const GalleryPage = () => {
   const [data, setData] = useState([]);
@@ -16,14 +16,12 @@ const GalleryPage = () => {
     setSelectedPhoto(null);
   };
 
-
   if (selectedPhoto) {
     return <PhotoDetails photo={selectedPhoto} onBack={handleBack} />;
   }
 
   return (
     <div className="min-h-screen p-4 sm:p-6 bg-white">
-  
       <div className="flex  justify-between sm:items-center sm:justify-between gap-3 mb-6">
         <h1 className="text-2xl font-bold text-black">Gallery</h1>
 
@@ -35,28 +33,28 @@ const GalleryPage = () => {
         </Link>
       </div>
 
-   
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
         {data.length === 0 && <p>No photos uploaded yet.</p>}
 
         {data.map((item) => (
           <div
-  key={item.id}
-  onClick={() => setSelectedPhoto(item)}
-  className="cursor-pointer border border-gray-300 rounded-xl overflow-hidden shadow-sm transition-transform hover:scale-[1.02] hover:shadow-md"
->
-  <div className="w-full h-40 sm:h-44 md:h-48 flex items-center justify-center bg-gray-100">
-    <img
-      src={item.image}
-      alt={item.title}
-      className="max-w-full max-h-full object-contain"
-    />
-  </div>
-  <p className="text-center mt-2 text-black font-medium text-sm sm:text-base">
-    {item.title}
-  </p>
-</div>
+            key={item.id}
+            onClick={() => setSelectedPhoto(item)}
+            className="cursor-pointer border border-gray-300 rounded-xl overflow-hidden shadow-sm transition-transform hover:scale-[1.02] hover:shadow-md"
+          >
+            <div className="w-full h-40 sm:h-44 md:h-48 flex items-center justify-center bg-gray-100">
+              <img
+                src={item.image}
+                alt={item.name}
+                className="max-w-full max-h-full object-contain"
+              />
+            </div>
+           
 
+            <p className="text-center mt-2 text-black font-medium text-sm sm:text-base">
+              {item.name}
+            </p>
+          </div>
         ))}
       </div>
     </div>
